@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio | Desarrollador Web</title>
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Iconos (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#0f172a',
+                        card: '#1e293b',
+                        primary: '#38bdf8', // Light blue/sky
+                        secondary: '#818cf8', // Indigo
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Utilidad para el gradiente de texto */
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Animación de entrada al hacer scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Efecto de resplandor para tarjetas */
+        .glow-effect:hover {
+            box-shadow: 0 0 25px -5px rgba(56, 189, 248, 0.3);
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-primary selection:text-white relative">
+
+    <!-- Navegación -->
+    <header
+        class="fixed w-full top-0 z-50 transition-all duration-300 backdrop-blur-md bg-dark/80 border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="#inicio" class="text-2xl font-bold tracking-tighter">
+                        <span class="text-white">&lt;</span><span class="text-primary">Rafael</span><span
+                            class="text-white">.Dev /&gt;</span>
+                    </a>
+                </div>
+
+                <!-- Enlaces Desktop -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#inicio"
+                        class="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Inicio</a>
+                    <a href="#proyectos"
+                        class="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Proyectos</a>
+                    <a href="#habilidades"
+                        class="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Habilidades</a>
+                    <a href="#contacto"
+                        class="text-gray-300 hover:text-primary transition-colors text-sm font-medium">Contacto</a>
+                </nav>
+
+                <!-- Botón Mobile -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-card border-b border-white/10 absolute w-full">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 shadow-xl">
+                <a href="#inicio"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Inicio</a>
+                <a href="#proyectos"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Proyectos</a>
+                <a href="#habilidades"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Habilidades</a>
+                <a href="#contacto"
+                    class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-white/5">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Sección de Inicio (Hero) -->
+        <section id="inicio" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
+            <!-- Círculos de fondo decorativos -->
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px] -z-10"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-secondary/20 rounded-full blur-[100px] -z-10"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal active">
+                <p class="text-primary font-medium tracking-wide mb-4 animate-bounce">👋 ¡Bienvenidos a mi portafolio de
+                    trabajo freelance!
+                </p>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                    Soy <span class="text-gradient">Rafael Benítez Tamayo</span><br>
+                    Ing. en Sistemas.
+                </h1>
+                <p class="mt-4 text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-10 font-light">
+                    "Desarrollo aplicaciones web funcionales,
+                    rápidas y bien diseñadas con interfaces intuitivas que resuelvan problemas reales."
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#proyectos"
+                        class="px-8 py-4 rounded-full bg-primary text-dark font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+                        Ver Mis Proyectos <i class="fas fa-arrow-down ml-2"></i>
+                    </a>
+                    <a href="#contacto"
+                        class="px-8 py-4 rounded-full bg-white/5 text-white font-semibold border border-white/10 hover:bg-white/10 transition-all hover:scale-105">
+                        Contáctame
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Proyectos -->
+        <section id="proyectos" class="py-24 bg-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Mis Proyectos</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                    <p class="mt-4 text-gray-400">Mis Apps Web Desarrolladas.</p>
+                </div>
+
+                <!-- Grid de Proyectos -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Proyecto 1 -->
+                    <div
+                        class="bg-card rounded-2xl overflow-hidden border border-white/10 glow-effect transition-all duration-300 group reveal">
+                        <div class="relative overflow-hidden aspect-video">
+                            <img src="https://placehold.co/600x400/0f172a/38bdf8?text=Inventario+Tecnologico"
+                                alt="Inventario Tecnologico"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Inventario de Equipos de Cómputo</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                                Sistema de gestión para llevar el control de inventario de equipos de cómputo,
+                                incluyendo registro, actualización y eliminación de activos.
+                            </p>
+                            <!-- Etiquetas Tecnologías -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-red-500/10 text-red-400 rounded-full">Next</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">JavaScript</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">React</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Tailwind</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Recharts</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Motion
+                                    Frame</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">CSS</span>
+                            </div>
+                            <!-- Botón Modificado para la Demo -->
+                            <div class="flex gap-3">
+                                <button onclick="abrirDemo('proyecto1')"
+                                    class="w-full text-center bg-white/10 hover:bg-primary hover:text-dark transition-colors text-white py-2 rounded-lg text-sm font-medium cursor-pointer">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ver Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 2 -->
+                    <div
+                        class="bg-card rounded-2xl overflow-hidden border border-white/10 glow-effect transition-all duration-300 group reveal delay-100">
+                        <div class="relative overflow-hidden aspect-video">
+                            <img src="https://placehold.co/600x400/0f172a/818cf8?text=Gestion+Operaciones"
+                                alt="Gestión de Operaciones"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Registros + Dashboard</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                                Aplicación web para la gestión de operaciones y registro de ticket importados
+                                automatizados con solo un clic mediante la API de otra app web. Incluye autenticación,
+                                roles de usuario y actualizaciones en tiempo real.
+                            </p>
+                            <!-- Etiquetas Tecnologías -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-red-500/10 text-red-400 rounded-full">Next</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">JavaScript</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Tailwind</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Recharts</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">CSS</span>
+                            </div>
+                            <!-- Botón Modificado para la Demo -->
+                            <div class="flex gap-3">
+                                <button onclick="abrirDemo('proyecto2')"
+                                    class="w-full text-center bg-white/10 hover:bg-primary hover:text-dark transition-colors text-white py-2 rounded-lg text-sm font-medium cursor-pointer">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ver Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Proyecto 3 -->
+                    <div
+                        class="bg-card rounded-2xl overflow-hidden border border-white/10 glow-effect transition-all duration-300 group reveal delay-200">
+                        <div class="relative overflow-hidden aspect-video">
+                            <img src="https://placehold.co/600x400/0f172a/10b981?text=App+Web+Vacaciones"
+                                alt="App Web Vacaciones"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Control + Aprobaciones + Históricos</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                                Sistema de gestión de vacaciones para control de solicitudes y aprobaciones
+                                corporativas.
+                            </p>
+                            <!-- Etiquetas Tecnologías -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-red-500/10 text-red-400 rounded-full">VITE</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">JavaScript</span>
+                                <span
+                                    class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">React</span>
+                            </div>
+                            <!-- Botón Modificado para la Demo -->
+                            <div class="flex gap-3">
+                                <button onclick="abrirDemo('proyecto3')"
+                                    class="w-full text-center bg-white/10 hover:bg-primary hover:text-dark transition-colors text-white py-2 rounded-lg text-sm font-medium cursor-pointer">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ver Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- =========================================================================
+                         👇 AQUÍ IRÁ EL BLOQUE HTML PARA TUS PROYECTOS FUTUROS (proyecto4, etc.) 👇
+                         Solo copia y pega este bloque, quita los signos de comentario y cambia 
+                         el nombre 'proyecto4' por el que vayas a usar abajo en baseDeDatosImgs.
+                    ========================================================================== -->
+                    <!--
+                    <div
+                        class="bg-card rounded-2xl overflow-hidden border border-white/10 glow-effect transition-all duration-300 group reveal">
+                        <div class="relative overflow-hidden aspect-video">
+                            <img src="public/demos/NombreCarpeta/01-portada.png"
+                                alt="Nombre del Nuevo Proyecto"
+                                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-card to-transparent opacity-80"></div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Título de tu Nuevo Proyecto</h3>
+                            <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                                Descripción breve de lo que hace esta nueva aplicación.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">React</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-green-500/10 text-green-400 rounded-full">Tailwind</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <button onclick="abrirDemo('proyecto4')"
+                                    class="w-full text-center bg-white/10 hover:bg-primary hover:text-dark transition-colors text-white py-2 rounded-lg text-sm font-medium cursor-pointer">
+                                    <i class="fas fa-external-link-alt mr-1"></i> Ver Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    -->
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Habilidades -->
+        <section id="habilidades" class="py-24 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Habilidades & Tecnologías</h2>
+                    <div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary mx-auto rounded-full"></div>
+                    <p class="mt-4 text-gray-400">Herramientas con las que construyo soluciones.</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+                    <!-- Habilidad 1 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-html5 text-5xl text-[#E34F26]"></i>
+                        <span class="font-medium text-gray-300">HTML5</span>
+                    </div>
+                    <!-- Habilidad 2 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-css3-alt text-5xl text-[#1572B6]"></i>
+                        <span class="font-medium text-gray-300">CSS3</span>
+                    </div>
+                    <!-- Habilidad 3 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-js text-5xl text-[#F7DF1E]"></i>
+                        <span class="font-medium text-gray-300">JavaScript</span>
+                    </div>
+                    <!-- Habilidad 4 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-react text-5xl text-[#61DAFB]"></i>
+                        <span class="font-medium text-gray-300">React</span>
+                    </div>
+                    <!-- Habilidad 5 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-node-js text-5xl text-[#339933]"></i>
+                        <span class="font-medium text-gray-300">Node.js</span>
+                    </div>
+                    <!-- Habilidad 6 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fas fa-database text-5xl text-blue-400"></i>
+                        <span class="font-medium text-gray-300">SQL / NoSQL</span>
+                    </div>
+                    <!-- Habilidad 7 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <i class="fab fa-git-alt text-5xl text-[#F05032]"></i>
+                        <span class="font-medium text-gray-300">Git & GitHub</span>
+                    </div>
+                    <!-- Habilidad 8 -->
+                    <div
+                        class="bg-card/50 border border-white/5 p-6 rounded-2xl flex flex-col items-center justify-center gap-3 hover:bg-card hover:-translate-y-2 transition-all duration-300">
+                        <svg class="w-12 h-12 text-[#38B2AC]" viewBox="0 0 24 24" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8zm4.5-9.5h-9v1h9v-1z" />
+                        </svg>
+                        <span class="font-medium text-gray-300">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Contacto -->
+        <section id="contacto" class="py-24 bg-dark/80 border-t border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row gap-16">
+
+                    <!-- Información de contacto y Redes -->
+                    <div class="lg:w-1/2 reveal">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Hablemos de tu próximo proyecto.</h2>
+                        <p class="text-gray-400 mb-8 text-lg">
+                            Actualmente estoy abierto a nuevas oportunidades. Ya sea que tengas una pregunta, una
+                            propuesta de proyecto o simplemente quieras saludar, ¡intentaré responderte lo antes
+                            posible!
+                        </p>
+
+                        <div class="space-y-4 mb-10">
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-primary">
+                                    <i class="fas fa-envelope text-xl"></i>
+                                </div>
+                                <span class="font-medium">beniteztamayorafael@gmail.com</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-primary">
+                                    <i class="fas fa-map-marker-alt text-xl"></i>
+                                </div>
+                                <span class="font-medium">Culiacán, Sinaloa, México</span>
+                            </div>
+                            <div class="flex items-center gap-4 text-gray-300">
+                                <div
+                                    class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-primary">
+                                    <i class="fas fa-phone-alt text-xl"></i>
+                                </div>
+                                <span class="font-medium">+52 6674513246</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de Contacto -->
+                    <div class="lg:w-1/2 reveal delay-100">
+                        <form id="contactForm"
+                            class="bg-card p-8 rounded-3xl border border-white/10 shadow-2xl relative">
+                            <!-- Overlay de éxito (oculto por defecto) -->
+                            <div id="successMessage"
+                                class="absolute inset-0 bg-card rounded-3xl z-10 flex flex-col items-center justify-center hidden opacity-0 transition-opacity duration-500">
+                                <div
+                                    class="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mb-4 text-3xl">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <h3 class="text-2xl font-bold text-white">¡Mensaje Enviado!</h3>
+                                <p class="text-gray-400 mt-2 text-center px-4">Gracias por contactarme, te responderé
+                                    pronto.</p>
+                                <button type="button" onclick="resetForm()"
+                                    class="mt-6 text-primary hover:text-white transition-colors underline">Enviar otro
+                                    mensaje</button>
+                            </div>
+
+                            <div class="mb-6">
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Nombre
+                                    completo</label>
+                                <input type="text" id="name" required
+                                    class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-600"
+                                    placeholder="Ej. Juan Pérez">
+                            </div>
+                            <div class="mb-6">
+                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Correo
+                                    electrónico</label>
+                                <input type="email" id="email" required
+                                    class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-600"
+                                    placeholder="juan@ejemplo.com">
+                            </div>
+                            <div class="mb-8">
+                                <label for="message"
+                                    class="block text-sm font-medium text-gray-400 mb-2">Mensaje</label>
+                                <textarea id="message" rows="4" required
+                                    class="w-full bg-dark/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all placeholder-gray-600 resize-none"
+                                    placeholder="Cuéntame sobre tu idea..."></textarea>
+                            </div>
+                            <button type="submit"
+                                class="w-full bg-primary hover:bg-primary/90 text-dark font-bold py-4 rounded-xl transition-all hover:shadow-[0_0_20px_rgba(56,189,248,0.4)]">
+                                Enviar Mensaje <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========================================================================
+         MODIFICACIÓN 1: VENTANA MODAL CON DESCRIPCIÓN DEBAJO DE CADA IMAGEN
+         (Ampliada a max-w-4xl para que tus capturas se vean grandes y nítidas)
+    ========================================================================== -->
+    <div id="modalDemo" class="fixed inset-0 z-50 bg-black/85 hidden items-center justify-center p-4">
+        <div class="bg-card border border-white/10 rounded-2xl max-w-4xl w-full p-6 relative shadow-2xl text-center">
+            <!-- Botón cerrar (X) -->
+            <button onclick="cerrarDemo()"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl font-bold cursor-pointer">
+                &times;
+            </button>
+
+            <!-- Título dinámico -->
+            <h3 id="modalTitulo" class="text-xl font-bold text-white mb-4">Demo del Proyecto</h3>
+
+            <!-- Contenedor de la Imagen -->
+            <div
+                class="relative overflow-hidden rounded-xl bg-dark aspect-video flex items-center justify-center border border-white/5 mb-3">
+                <img id="imagenDemo" src="" alt="Captura de la app" class="max-h-full max-w-full object-contain">
+            </div>
+
+            <!-- Texto descriptivo dinámico debajo de cada imagen -->
+            <p id="descripcionDemo" class="text-gray-300 text-sm mb-4 min-h-[2.5rem] px-3 leading-relaxed">
+                Descripción de la pantalla.
+            </p>
+
+            <!-- Controles de Anterior / Siguiente -->
+            <div class="flex justify-between items-center mt-4 pt-3 border-t border-white/10">
+                <button onclick="cambiarImagen(-1)"
+                    class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg text-sm font-medium transition-colors cursor-pointer">
+                    <i class="fas fa-chevron-left mr-1"></i> Anterior
+                </button>
+                <span id="contadorImgs" class="text-gray-400 text-sm font-medium">1 / 3</span>
+                <button onclick="cambiarImagen(1)"
+                    class="px-4 py-2 bg-primary text-dark rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors cursor-pointer">
+                    Siguiente <i class="fas fa-chevron-right ml-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-8 border-t border-white/5 text-center">
+        <p class="text-gray-500 text-sm">
+            &copy; <span id="year"></span>
+            <br>
+            <span>Rafael Benitez Tamayo</span>
+        </p>
+    </footer>
+
+    <!-- Lógica de Interfaz (JavaScript) -->
+    <script>
+        // Actualizar año del footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Menú Móvil Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú móvil al hacer click en un enlace
+        const mobileLinks = menu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Animación "Scroll Reveal"
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+
+        // Simulación de envío de formulario
+        const form = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            successMessage.classList.remove('hidden');
+            setTimeout(() => {
+                successMessage.classList.remove('opacity-0');
+                successMessage.classList.add('opacity-100');
+            }, 50);
+        });
+
+        function resetForm() {
+            form.reset();
+            successMessage.classList.remove('opacity-100');
+            successMessage.classList.add('opacity-0');
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 500);
+        }
+
+        // =========================================================================
+        // BASE DE DATOS DE IMÁGENES + TEXTO DESCRIPTIVO DE CADA UNA
+        // Cada objeto dentro de "imagenes" lleva su ruta (src) y su descripción (texto).
+        // =========================================================================
+        const baseDeDatosImgs = {
+            proyecto1: {
+                titulo: "Inventario de Equipos de Cómputo",
+                imagenes: [
+                    {
+                        src: "public/demos/Inventario-TI/01-login.png",
+                        texto: "Pantalla de inicio de sesión con acceso seguro y diseño adaptado a la marca de cada empresa."
+                    },
+                    {
+                        src: "public/demos/Inventario-TI/02-dashboard.png",
+                        texto: "Dashboard ejecutivo con métricas en tiempo real, alertas de garantías y gráficas por marca y ubicación."
+                    },
+                    {
+                        src: "public/demos/Inventario-TI/02-dashboard_2.png",
+                        texto: "Dashboard ejecutivo con métricas en tiempo real, alertas de garantías y gráficas por marca y ubicación."
+                    },
+                    {
+                        src: "public/demos/Inventario-TI/03-Datos.png",
+                        texto: "Tabla dinámica de activos con búsqueda instantánea, filtros por columna y exportación a Excel, CSV y PDF."
+                    },
+                    {
+                        src: "public/demos/Inventario-TI/04-Equipo nuevo.png",
+                        texto: "Modal para registrar nuevos equipos con validación de datos."
+                    },
+                ]
+            },
+            proyecto2: {
+                titulo: "Registros + Dashboard",
+                imagenes: [
+                    {
+                        src: "https://placehold.co/800x500/1e293b/818cf8?text=Dashboard+-+Graficas",
+                        texto: "Panel principal de métricas operativas y seguimiento de tickets en tiempo real."
+                    },
+                    {
+                        src: "https://placehold.co/800x500/1e293b/818cf8?text=Dashboard+-+Tabla+de+Tickets",
+                        texto: "Importación automatizada de tickets mediante API con un solo clic y control de roles."
+                    }
+                ]
+            },
+            proyecto3: {
+                titulo: "Control + Aprobaciones + Históricos",
+                imagenes: [
+                    {
+                        src: "https://placehold.co/800x500/1e293b/10b981?text=Vacaciones+-+Solicitud",
+                        texto: "Formulario de solicitud de días disponibles con validación automática de fechas."
+                    },
+                    {
+                        src: "https://placehold.co/800x500/1e293b/10b981?text=Vacaciones+-+Historial",
+                        texto: "Flujo de aprobación corporativa e historial de saldo acumulado por colaborador."
+                    }
+                ]
+            }
+
+            // =========================================================================
+            // 👇 AQUÍ IRÁ EL NUEVO BLOQUE PARA PROYECTOS FUTUROS 👇
+            // Solo pon una coma después de la llave } de proyecto3, quita los // y edita:
+            // =========================================================================
+            // ,proyecto4: {
+            //     titulo: "Título de tu Nuevo Proyecto",
+            //     imagenes: [
+            //         {
+            //             src: "public/demos/NombreCarpeta/01-inicio.png",
+            //             texto: "Descripción de la primera pantalla de tu nuevo proyecto."
+            //         },
+            //         {
+            //             src: "public/demos/NombreCarpeta/02-detalle.png",
+            //             texto: "Descripción de la segunda pantalla."
+            //         }
+            //     ]
+            // }
+        };
+
+        let proyectoActualKey = '';
+        let indiceImagenActual = 0;
+
+        function abrirDemo(claveProyecto) {
+            proyectoActualKey = claveProyecto;
+            indiceImagenActual = 0;
+
+            const proyecto = baseDeDatosImgs[claveProyecto];
+            document.getElementById('modalTitulo').textContent = proyecto.titulo;
+
+            actualizarModalImagen();
+
+            // Mostrar modal
+            const modal = document.getElementById('modalDemo');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function cerrarDemo() {
+            const modal = document.getElementById('modalDemo');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function cambiarImagen(direccion) {
+            const lista = baseDeDatosImgs[proyectoActualKey].imagenes;
+            indiceImagenActual += direccion;
+
+            if (indiceImagenActual >= lista.length) {
+                indiceImagenActual = 0; // Regresa a la primera
+            } else if (indiceImagenActual < 0) {
+                indiceImagenActual = lista.length - 1; // Va a la última
+            }
+
+            actualizarModalImagen();
+        }
+
+        // =========================================================================
+        // MODIFICACIÓN 3: ACTUALIZA TANTO LA IMAGEN COMO SU TEXTO INFERIOR
+        // =========================================================================
+        function actualizarModalImagen() {
+            const proyecto = baseDeDatosImgs[proyectoActualKey];
+            const itemActual = proyecto.imagenes[indiceImagenActual];
+
+            document.getElementById('imagenDemo').src = itemActual.src;
+            document.getElementById('descripcionDemo').textContent = itemActual.texto || '';
+            document.getElementById('contadorImgs').textContent = `${indiceImagenActual + 1} / ${proyecto.imagenes.length}`;
+        }
+
+        // Cerrar modal haciendo clic fuera de la caja
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('modalDemo');
+            if (e.target === modal) {
+                cerrarDemo();
+            }
+        });
+    </script>
+</body>
+
+</html>
